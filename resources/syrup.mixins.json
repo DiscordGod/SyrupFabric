@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "com.emhwebserver.syrup.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinMinecraftClient",
+    "MixinGameRenderer",
+    "MixinMouseClick"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "refmap": "SyrupFabric-refmap.json"
+}
