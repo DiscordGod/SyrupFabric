@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "syrup",
+  "version": "1.11",
+
+  "name": "Syrup",
+  "description": "Sickly sweet additions",
+  "authors": [
+    "E"
+  ],
+  "environment": "*",
+  "icon": "assets/syrup/image/logo.png",
+  "entrypoints": {
+    "main": [
+      "com.emhwebserver.syrup.SyrupMod"
+    ],
+    "client": [
+      "com.emhwebserver.syrup.SyrupClient"
+    ]
+  },
+  "mixins": [
+    "syrup.mixins.json"
+  ],
+
+  "requires": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}

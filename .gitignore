@@ -1,0 +1,15 @@
+.settings/
+Curse Stuff/
+out/
+run/
+.classpath
+.project
+Minecraft_Client.launch
+Minecraft_Server.launch
+SyrupFabric.iml
+SyrupFabric.ipr
+SyrupFabric.iws
+build/
+.gradle/
+SyrupFabric.main.iml
+SyrupFabric.test.iml
