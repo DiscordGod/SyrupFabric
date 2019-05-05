@@ -2,12 +2,13 @@ package com.emhwebserver.syrup.ui;
 
 import com.emhwebserver.syrup.event.Event;
 import com.emhwebserver.syrup.utils.CPSHelper;
+import com.emhwebserver.syrup.utils.SymbolConverter;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.MinecraftClient;
 
 public class UIRenderer {
   private MinecraftClient mc = MinecraftClient.getInstance();
-  private com.emhwebserver.syrup.utils.SymbolConverter sc = new com.emhwebserver.syrup.utils.SymbolConverter();
+  private SymbolConverter sc = new com.emhwebserver.syrup.utils.SymbolConverter();
   
   public void draw()
   {
@@ -20,12 +21,12 @@ public class UIRenderer {
     drawString("D", 21, 27, mc.options.keyRight.isPressed() ? 0x00ff00 : 0xff0000);
     GlStateManager.scaled(0.5, 0.5, 0.5);
     drawString("Sprint", 2, 75, mc.player.isSprinting() ? 0x00ff00 : 0xff0000);
-    drawString(this.sc.convertText("&lCPS: ") + CPSHelper.getClicks(), 6 + mc.textRenderer.getStringWidth("Sprint"), 75, CPSHelper.getClicks() > 0  ? 0x00ff00 : 0xff0000);
+    drawString(sc.convertText("&lCPS: ") + CPSHelper.getClicks(), 6 + mc.textRenderer.getStringWidth("Sprint"), 75, CPSHelper.getClicks() > 0  ? 0x00ff00 : 0xff0000);
     drawString("Swinging", 2, 90, mc.player.isHandSwinging ? 0x00ff00 : 0xff0000);
-    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Helmet Durability: N/A" : mc.player.inventory.getArmorStack(3) != null ? "Helmet Durability: " + (mc.player.inventory.getArmorStack(3).getDurability() - mc.player.inventory.getArmorStack(3).getDamage()) + "/" + mc.player.inventory.getArmorStack(3).getDurability() : "", 2, 105, mc.player.inventory.getArmorStack(3) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(3).getDurability() - mc.player.inventory.getArmorStack(3).getDamage(), mc.player.inventory.getArmorStack(3).getDurability()) : 0xffffff);
-    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Chestplate Durability: N/A" : mc.player.inventory.getArmorStack(2) != null ? "Chestplate Durability: " + (mc.player.inventory.getArmorStack(2).getDurability() - mc.player.inventory.getArmorStack(2).getDamage()) + "/" + mc.player.inventory.getArmorStack(2).getDurability() : "", 2, 120, mc.player.inventory.getArmorStack(2) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(2).getDurability() - mc.player.inventory.getArmorStack(2).getDamage(), mc.player.inventory.getArmorStack(2).getDurability()) : 0xffffff);
-    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Leggings Durability: N/A" : mc.player.inventory.getArmorStack(1) != null ? "Leggings Durability: " + (mc.player.inventory.getArmorStack(1).getDurability() - mc.player.inventory.getArmorStack(1).getDamage()) + "/" + mc.player.inventory.getArmorStack(1).getDurability() : "", 2, 135, mc.player.inventory.getArmorStack(1) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(1).getDurability() - mc.player.inventory.getArmorStack(1).getDamage(), mc.player.inventory.getArmorStack(1).getDurability()) : 0xffffff);
-    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Boots Durability: N/A" : mc.player.inventory.getArmorStack(0) != null ? "Boots Durability: " + (mc.player.inventory.getArmorStack(0).getDurability() - mc.player.inventory.getArmorStack(0).getDamage()) + "/" + mc.player.inventory.getArmorStack(0).getDurability() : "", 2, 150, mc.player.inventory.getArmorStack(0) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(0).getDurability() - mc.player.inventory.getArmorStack(0).getDamage(), mc.player.inventory.getArmorStack(0).getDurability()) : 0xffffff);
+    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Helmet Durability: " + (mc.player.inventory.getArmorStack(3).getDurability() - mc.player.inventory.getArmorStack(3).getDamage()) + "/" + mc.player.inventory.getArmorStack(3).getDurability() : "", 2, 105, mc.player.inventory.getArmorStack(3) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(3).getDurability() - mc.player.inventory.getArmorStack(3).getDamage(), mc.player.inventory.getArmorStack(3).getDurability()) : 0xffffff);
+    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Chestplate Durability: " + (mc.player.inventory.getArmorStack(2).getDurability() - mc.player.inventory.getArmorStack(2).getDamage()) + "/" + mc.player.inventory.getArmorStack(2).getDurability() : "", 2, 120, mc.player.inventory.getArmorStack(2) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(2).getDurability() - mc.player.inventory.getArmorStack(2).getDamage(), mc.player.inventory.getArmorStack(2).getDurability()) : 0xffffff);
+    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Leggings Durability: " + (mc.player.inventory.getArmorStack(1).getDurability() - mc.player.inventory.getArmorStack(1).getDamage()) + "/" + mc.player.inventory.getArmorStack(1).getDurability() : "", 2, 135, mc.player.inventory.getArmorStack(1) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(1).getDurability() - mc.player.inventory.getArmorStack(1).getDamage(), mc.player.inventory.getArmorStack(1).getDurability()) : 0xffffff);
+    drawString(Event.moduleManager.armorStatus.isEnabled() ? "Boots Durability: " + (mc.player.inventory.getArmorStack(0).getDurability() - mc.player.inventory.getArmorStack(0).getDamage()) + "/" + mc.player.inventory.getArmorStack(0).getDurability() : "", 2, 150, mc.player.inventory.getArmorStack(0) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(0).getDurability() - mc.player.inventory.getArmorStack(0).getDamage(), mc.player.inventory.getArmorStack(0).getDurability()) : 0xffffff);
   }
   
   private int getColorByCurrentAndMax(int current, int max) {

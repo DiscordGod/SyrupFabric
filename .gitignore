@@ -13,3 +13,4 @@ build/
 .gradle/
 SyrupFabric.main.iml
 SyrupFabric.test.iml
+.metadata/
