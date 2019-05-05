@@ -11,17 +11,18 @@ public class ModuleManager {
   public ArmorStatus armorStatus;
   
   public void init() {
-    this.fullbright = new Fullbright();
-    this.sprint = new com.emhwebserver.syrup.module.modules.Sprint();
-    this.armorStatus = new ArmorStatus();
-    this.moduleList.add(this.fullbright);
-    this.moduleList.add(this.sprint);
-    this.moduleList.add(this.armorStatus);
+    fullbright = new Fullbright();
+    sprint = new com.emhwebserver.syrup.module.modules.Sprint();
+    armorStatus = new ArmorStatus();
+    moduleList.add(fullbright);
+    moduleList.add(sprint);
+    moduleList.add(armorStatus);
+    armorStatus.setEnabled(true);
   }
   
   public ArrayList<Module> getEnabledModules() {
     ArrayList<Module> toggledModules = new ArrayList();
-    for (Module module : this.moduleList) {
+    for (Module module : moduleList) {
       if (module.isEnabled())
         toggledModules.add(module);
     }
@@ -30,7 +31,7 @@ public class ModuleManager {
   
   public ArrayList<Module> getDisabledModules() {
     ArrayList<Module> unToggledModules = new ArrayList();
-    for (Module module : this.moduleList) {
+    for (Module module : moduleList) {
       if (!module.isEnabled())
         unToggledModules.add(module);
     }
