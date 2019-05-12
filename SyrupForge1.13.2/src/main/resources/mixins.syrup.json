@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "com.emhwebserver.syrup.mixin.mixins",
+  "refmap": "mixins.syrup.refmap.json",
+  "minVersion": "0.6",
+  "client": [
+    "ClickMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

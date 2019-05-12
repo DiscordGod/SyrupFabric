@@ -1,0 +1,12 @@
+{
+    "id": "syrup",
+    "name": "Syrup",
+    "authors": [
+        "E"
+    ],
+    "listeners": [
+        "com.emhwebserver.syrup.listeners.InitListener",
+        "com.emhwebserver.syrup.listeners.MainListener",
+        "com.emhwebserver.syrup.listeners.RenderOverlayListener"
+    ]
+}

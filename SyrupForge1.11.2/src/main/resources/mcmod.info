@@ -1,0 +1,16 @@
+[
+{
+  "modid": "syrup",
+  "name": "Syrup",
+  "description": "Sickly sweet additions",
+  "version": "1.13",
+  "mcversion": "1.11.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["E"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

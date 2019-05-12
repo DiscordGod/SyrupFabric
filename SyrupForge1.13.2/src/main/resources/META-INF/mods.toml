@@ -1,0 +1,7 @@
+modLoader="javafml"
+loaderVersion="[25,)"
+[[mods]]
+modId="syrup"
+version="1.13"
+displayName="Syrup"
+description='''Sickly sweet additions'''
