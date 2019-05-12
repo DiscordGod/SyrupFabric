@@ -2,16 +2,19 @@ package com.emhwebserver.syrup.ui;
 
 import com.emhwebserver.syrup.event.Event;
 import com.emhwebserver.syrup.utils.CPSHelper;
-import com.emhwebserver.syrup.utils.SymbolConverter;
 import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
+
+import java.util.Collection;
+import java.util.Map;
 
 public class UIRenderer {
   private MinecraftClient mc = MinecraftClient.getInstance();
-  private SymbolConverter sc = new com.emhwebserver.syrup.utils.SymbolConverter();
   
-  public void draw()
-  {
+  public void draw() {
     drawString("[FPS] " + mc.fpsDebugString.split("fps ")[0] + "fps ", 2, 1, 0xffffff);
     drawString("[XYZ] " + Math.round(mc.player.x) + "/" + Math.round(mc.player.y) + "/" + Math.round(mc.player.z), 2, 15, 0xffffff);
     GlStateManager.scaled(2.0, 2.0, 2.0);
@@ -21,12 +24,13 @@ public class UIRenderer {
     drawString("D", 21, 27, mc.options.keyRight.isPressed() ? 0x00ff00 : 0xff0000);
     GlStateManager.scaled(0.5, 0.5, 0.5);
     drawString("Sprint", 2, 75, mc.player.isSprinting() ? 0x00ff00 : 0xff0000);
-    drawString(sc.convertText("&lCPS: ") + CPSHelper.getClicks(), 6 + mc.textRenderer.getStringWidth("Sprint"), 75, CPSHelper.getClicks() > 0  ? 0x00ff00 : 0xff0000);
+    drawString("CPS: " + CPSHelper.getClicks(), 6 + mc.textRenderer.getStringWidth("Sprint"), 75, CPSHelper.getClicks() > 0  ? 0x00ff00 : 0xff0000);
     drawString("Swinging", 2, 90, mc.player.isHandSwinging ? 0x00ff00 : 0xff0000);
     drawString(Event.moduleManager.armorStatus.isEnabled() ? "Helmet Durability: " + (mc.player.inventory.getArmorStack(3).getDurability() - mc.player.inventory.getArmorStack(3).getDamage()) + "/" + mc.player.inventory.getArmorStack(3).getDurability() : "", 2, 105, mc.player.inventory.getArmorStack(3) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(3).getDurability() - mc.player.inventory.getArmorStack(3).getDamage(), mc.player.inventory.getArmorStack(3).getDurability()) : 0xffffff);
     drawString(Event.moduleManager.armorStatus.isEnabled() ? "Chestplate Durability: " + (mc.player.inventory.getArmorStack(2).getDurability() - mc.player.inventory.getArmorStack(2).getDamage()) + "/" + mc.player.inventory.getArmorStack(2).getDurability() : "", 2, 120, mc.player.inventory.getArmorStack(2) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(2).getDurability() - mc.player.inventory.getArmorStack(2).getDamage(), mc.player.inventory.getArmorStack(2).getDurability()) : 0xffffff);
     drawString(Event.moduleManager.armorStatus.isEnabled() ? "Leggings Durability: " + (mc.player.inventory.getArmorStack(1).getDurability() - mc.player.inventory.getArmorStack(1).getDamage()) + "/" + mc.player.inventory.getArmorStack(1).getDurability() : "", 2, 135, mc.player.inventory.getArmorStack(1) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(1).getDurability() - mc.player.inventory.getArmorStack(1).getDamage(), mc.player.inventory.getArmorStack(1).getDurability()) : 0xffffff);
     drawString(Event.moduleManager.armorStatus.isEnabled() ? "Boots Durability: " + (mc.player.inventory.getArmorStack(0).getDurability() - mc.player.inventory.getArmorStack(0).getDamage()) + "/" + mc.player.inventory.getArmorStack(0).getDurability() : "", 2, 150, mc.player.inventory.getArmorStack(0) != null ? getColorByCurrentAndMax(mc.player.inventory.getArmorStack(0).getDurability() - mc.player.inventory.getArmorStack(0).getDamage(), mc.player.inventory.getArmorStack(0).getDurability()) : 0xffffff);
+    drawString("Health: " + Math.round(mc.player.getHealth()), 2, 165, getColorByCurrentAndMax((int)mc.player.getHealth(), 20));
   }
   
   private int getColorByCurrentAndMax(int current, int max) {
@@ -59,4 +63,5 @@ public class UIRenderer {
   private void drawString(String text, float x, float y, int color) {
     mc.textRenderer.drawWithShadow(text, x, y, color);
   }
+
 }

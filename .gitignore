@@ -14,3 +14,4 @@ build/
 SyrupFabric.main.iml
 SyrupFabric.test.iml
 .metadata/
+.idea/
