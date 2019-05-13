@@ -1,23 +1,29 @@
 package com.emhwebserver.syrup.module;
 
-import com.emhwebserver.syrup.module.modules.ArmorStatus;
-import com.emhwebserver.syrup.module.modules.Fullbright;
+import com.emhwebserver.syrup.SyrupMod;
+import com.emhwebserver.syrup.module.modules.*;
+
 import java.util.ArrayList;
 
 public class ModuleManager {
   public ArrayList<Module> moduleList = new ArrayList();
   public Fullbright fullbright;
-  public com.emhwebserver.syrup.module.modules.Sprint sprint;
+  public Sprint sprint;
   public ArmorStatus armorStatus;
+  public Keys keys;
+  public Coords coords;
   
   public void init() {
     fullbright = new Fullbright();
-    sprint = new com.emhwebserver.syrup.module.modules.Sprint();
+    sprint = new Sprint();
     armorStatus = new ArmorStatus();
+    keys = new Keys();
+    coords = new Coords();
     moduleList.add(fullbright);
     moduleList.add(sprint);
     moduleList.add(armorStatus);
-    armorStatus.setEnabled(true);
+    moduleList.add(keys);
+    moduleList.add(coords);
   }
   
   public ArrayList<Module> getEnabledModules() {

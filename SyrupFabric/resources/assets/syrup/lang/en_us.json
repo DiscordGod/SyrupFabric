@@ -1,5 +1,7 @@
 {
   "key.syrup.sprint": "ToggleSprint",
   "key.syrup.fullbright": "Fullbright",
-  "key.syrup.armorstatus": "Armor Status"
+  "key.syrup.armorstatus": "Armor Status",
+  "key.syrup.coords": "Coords",
+  "key.syrup.keys": "Keystrokes"
 }

@@ -26,10 +26,10 @@ public class Module {
   public void setEnabled(boolean enabled) {
     this.enabled = enabled;
     if (enabled) {
-      onEnable();
+      this.onEnable();
     }
     if (!enabled) {
-      onDisable();
+      this.onDisable();
     }
   }
   

@@ -5,7 +5,8 @@
   "mixins": [
     "MixinMinecraftClient",
     "MixinGameRenderer",
-    "MixinMouseClick"
+    "MixinMouseClick",
+    "MixinClientWorld"
   ],
   "client": [],
   "injectors": {
